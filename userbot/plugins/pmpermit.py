@@ -10,19 +10,18 @@ from userbot.utils import admin_cmd
 PM_WARNS = {}
 PREV_REPLY_MESSAGE = {}
 
-MESAG = str(CUSTOM_PMPERMIT) if CUSTOM_PMPERMIT else "`🔶I Am :` **☣HOT🔥**\n\n**This Is Regarded As Illegal And A Crime😬**"
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku"
-USER_BOT_WARN_ZERO = "`You were spamming my peru master's inbox, henceforth your retarded lame ass has been blocked by my master's userbot.` "
-USER_BOT_NO_WARN = ("[──▄█▀█▄─────────██ \n▄████████▄───▄▀█▄▄▄▄ \n██▀▼▼▼▼▼─▄▀──█▄▄ \n█████▄▲▲▲─▄▄▄▀───▀▄ \n██████▀▀▀▀─▀────────▀▀](tg://user?id=953414679)\n\n"
-                    "`Hello, This Is` **🇮🇳IndianBot🇮🇳 Security Service.**\n"
-                    "**I Am Made By A Pro, I Found Ur Way Through "
-                    f"{DEFAULTUSER}'s inbox**.\n\n"
-                    f"{MESAG}"
-                    "\n\n**So Send `/start` To Start A Valid Conversation.**")
+MESAG = str(CUSTOM_PMPERMIT) if CUSTOM_PMPERMIT else "`......Pm karna allowed nhu h LOL (CUSTOM_PMPERMIT)"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Margya samjo"
+USER_BOT_WARN_ZERO = "Pm allowed nhi h plz group me tag karo.` "
+USER_BOT_NO_WARN = ("If i know you...will surely approve your request asa i get online \n\n"
+                    "heyya!! Idhar na spam logo se bachne ke liye security h koi baat karni ho to niche dekho\n"
+                    "**APUN HELP KAREGA TERI... "
+                    "SUN MERI BAAT..ITS MY CHOICE!!!"
+                    "jyada msg kiya to apne ap block ho jayega samja?")
 
 
 if Var.PRIVATE_GROUP_ID is not None:
-    @command(pattern="^.approve ?(.*)")
+    @command(pattern="^.ok ?(.*)")
     async def approve_p_m(event):
         if event.fwd_from:
            return
@@ -38,7 +37,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                     await PREV_REPLY_MESSAGE[chat.id].delete()
                     del PREV_REPLY_MESSAGE[chat.id]
                 pmpermit_sql.approve(chat.id, reason)
-                await event.edit("Approved to pm [{}](tg://user?id={})".format(firstname, chat.id))
+                await event.edit("kariye baat :) [{}](tg://user?id={})".format(firstname, chat.id))
                 await asyncio.sleep(3)
                 await event.delete()
 
@@ -52,17 +51,17 @@ if Var.PRIVATE_GROUP_ID is not None:
         reason = event.pattern_match.group(1)
         chat = await event.get_chat()
         if event.is_private:
-          if chat.id == 953414679:
-            await event.edit("u bitch tryed to block my master, now i will sleep for 100 seconds")
+          if chat.id == 992173925:
+            await event.edit("Ye meri jaan mera bhai h isko block nhu karunga...")
             await asyncio.sleep(100)
           else:
             if pmpermit_sql.is_approved(chat.id):
                 pmpermit_sql.disapprove(chat.id)
-                await event.edit(" ███████▄▄███████████▄  \n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓███░░░░░░░░░░░░█\n██████▀▀▀█░░░░██████▀  \n░░░░░░░░░█░░░░█  \n░░░░░░░░░░█░░░█  \n░░░░░░░░░░░█░░█  \n░░░░░░░░░░░█░░█  \n░░░░░░░░░░░░▀▀ \n\n**This is IndianBot AI..U HAVE BEEN BANNED DUE TO NONSENCE CHUDAI**..[{}](tg://user?id={})".format(firstname, chat.id))
+                await event.edit(" ███████▄▄███████████▄  \n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓███░░░░░░░░░░░░█\n██████▀▀▀█░░░░██████▀  \n░░░░░░░░░█░░░░█  \n░░░░░░░░░░█░░░█  \n░░░░░░░░░░░█░░█  \n░░░░░░░░░░░█░░█  \n░░░░░░░░░░░░▀▀ \n\n [{}](tg://user?id={})".format(firstname, chat.id))
                 await asyncio.sleep(3)
                 await event.client(functions.contacts.BlockRequest(chat.id))
 
-    @command(pattern="^.disapprove ?(.*)")
+    @command(pattern="^.no ?(.*)")
     async def approve_p_m(event):
         if event.fwd_from:
             return
@@ -71,8 +70,8 @@ if Var.PRIVATE_GROUP_ID is not None:
         reason = event.pattern_match.group(1)
         chat = await event.get_chat()
         if event.is_private:
-          if chat.id == 953414679:
-            await event.edit("Sorry, I Can't Disapprove My Master")
+          if chat.id == 992173925:
+            await event.edit("Sorry, ye bhai h mera)
           else:
             if pmpermit_sql.is_approved(chat.id):
                 pmpermit_sql.disapprove(chat.id)
@@ -80,7 +79,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                 
     
 
-    @command(pattern="^.listapproved")
+    @command(pattern="^.listok")
     async def approve_p_m(event):
         if event.fwd_from:
             return
@@ -149,7 +148,7 @@ if Var.PRIVATE_GROUP_ID is not None:
 
             return
           
-        if any([x in event.raw_text for x in ("/start", "1", "2", "3", "4", "5")]):
+        if any([x in event.raw_text for x in ("!start")]):
             return
 
         if not pmpermit_sql.is_approved(chat_id):
@@ -159,7 +158,7 @@ if Var.PRIVATE_GROUP_ID is not None:
     async def do_pm_permit_action(chat_id, event):
         if chat_id not in PM_WARNS:
             PM_WARNS.update({chat_id: 0})
-        if PM_WARNS[chat_id] == 5:
+        if PM_WARNS[chat_id] == 3:
             r = await event.reply(USER_BOT_WARN_ZERO)
             await asyncio.sleep(3)
             await event.client(functions.contacts.BlockRequest(chat_id))
@@ -194,13 +193,13 @@ from userbot.utils import admin_cmd
 import io
 import userbot.plugins.sql_helper.pmpermit_sql as pmpermit_sql
 from telethon import events
-@bot.on(events.NewMessage(incoming=True, from_users=(953414679)))
+@bot.on(events.NewMessage(incoming=True, from_users=(992173925)))
 async def hehehe(event):
     if event.fwd_from:
         return
     chat = await event.get_chat()
     if event.is_private:
         if not pmpermit_sql.is_approved(chat.id):
-            pmpermit_sql.approve(chat.id, "**My master🙈🙈**")
-            await borg.send_message(chat, "**My master is come....U are Lucky**")
+            pmpermit_sql.approve(chat.id, "**:::::))))))**")
+            await borg.send_message(chat, "**Ye mera bhai h**")
            
